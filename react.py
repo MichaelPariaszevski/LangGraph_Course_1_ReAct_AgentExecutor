@@ -27,3 +27,7 @@ def triple(num: float) -> float:
     return tripled_num
 
 tools=[TavilySearchResults(max_results=1), triple]
+
+llm=ChatOpenAI(model_name="gpt-4o-mini", temperature=0) 
+
+react_agent_runnable=create_react_agent(llm=llm, tools=tools, prompt=react_prompt) # Returns either an AgentAction or AgentFinish object
