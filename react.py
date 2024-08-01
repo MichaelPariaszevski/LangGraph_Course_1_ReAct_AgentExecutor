@@ -7,7 +7,8 @@ from langchain.agents import create_react_agent
 from langchain_community.tools.tavily_search import TavilySearchResults
 from langchain_core.prompts import PromptTemplate
 from langchain_core.tools import tool
-from langchain_openai import ChatOpenAI
+# from langchain_openai import ChatOpenAI
+from langchain_groq import ChatGroq
 
 react_prompt: PromptTemplate = hub.pull("hwchase17/react")
 
@@ -28,6 +29,6 @@ def triple(num: float) -> float:
 
 tools=[TavilySearchResults(max_results=1), triple]
 
-llm=ChatOpenAI(model_name="gpt-4o-mini", temperature=0) 
+llm=ChatGroq(model_name="llama-3.1-70b-versatile", temperature=0, max_tokens=None, max_retries=2) 
 
 react_agent_runnable=create_react_agent(llm=llm, tools=tools, prompt=react_prompt) # Returns either an AgentAction or AgentFinish object

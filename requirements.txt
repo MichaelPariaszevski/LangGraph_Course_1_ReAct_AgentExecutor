@@ -4,3 +4,4 @@ langchain-openai
 langgraph==0.1.10 # On WSL2 Ubuntu Linux, langgraph (latest version) raised ModuleNotFoundError: langgraph.checkpoint
 langchainhub 
 python-dotenv
+langchain-groq
